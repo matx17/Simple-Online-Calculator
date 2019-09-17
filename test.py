@@ -33,4 +33,20 @@ class MyTestCase(unittest.TestCase):
             rv =  self.app.get('/sub?A=2.3&B=-3.3')
             self.assertMultiLineEqual('5.6', rv.data)
                 
+        def test_mulint(self):
+            rv =  self.app.get('/mul?A=2&B=5')
+            self.assertMultiLineEqual('10', rv.data)
+        def test_mulfloat(self):
+            rv =  self.app.get('/mul?A=2.3&B=3.3')
+            self.assertMultiLineEqual('7.59', rv.data)
+        def test_mulfrac(self):
+            rv =  self.app.get('/mul?A=2/3&B=3/3')
+            self.assertMultiLineEqual('0.666666666667', rv.data)
+        def test_mulneg(self):
+            rv =  self.app.get('/mul?A=2.3&B=-3.3')
+            self.assertMultiLineEqual('-7.59', rv.data)
+
+if __name__ == '__main__':
+    unittest.main()       
+                
                 
